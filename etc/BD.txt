@@ -1,0 +1,20 @@
+create database pocromualdo;
+
+use pocromualdo;
+
+create table item (
+	id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	variavel VARCHAR(100),
+	dtype VARCHAR(100)
+);
+
+insert into item (variavel, dtype) values('valor1', 'item');
+insert into item (variavel, dtype) values('valor2', 'item');
+insert into item (variavel, dtype) values('valor3', 'item');
+insert into item (variavel, dtype) values('valor4', 'item');
+insert into item (variavel, dtype) values('valor5', 'item');
+insert into item (variavel, dtype) values('valor6', 'item');
+insert into item (variavel, dtype) values('valor7', 'item');
+insert into item (variavel, dtype) values('valor8', 'item');
+insert into item (variavel, dtype) values('valor9', 'item');
+insert into item (variavel, dtype) values('valor10', 'item');

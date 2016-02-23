@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Index</ui:define>
+	<ui:define name="corpo">
+		<h:form id="formulario" prependId="false">
+
+			<p:dataTable var="item" value="#{simpleBean.listarItens()}"
+				paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15" id="table" prependId="false">
+				<p:column headerText="Variavel" sortBy="#{item.variavel}"
+					filterBy="#{item.variavel}">
+					<h:outputText value="#{item.variavel}" />
+				</p:column>
+				<p:column headerText="Opções">
+					<p:commandButton action="#{simpleBean.prepararEdicao()}"
+						icon="ui-icon-pencil" ajax="false">
+						<f:param name="idItem" value="#{item.id}" />
+					</p:commandButton>
+
+					<p:commandButton action="#{simpleBean.excluir(item)}"
+						icon="ui-icon-trash" ajax="false" update=":formulario" />
+
+				</p:column>
+			</p:dataTable>
+
+			<p:remoteCommand name="updateTable" process="@this" update=":table" />
+
+		</h:form>
+
+		<script>
+			if (window.WebSocket) {
+			    var ws = new WebSocket("ws://localhost:8888/Romualdo-web/push");
+			    ws.onmessage = function(event) {
+			        var functionName = event.data;
+			        if (window[functionName]) {
+			            window[functionName]();
+			        }
+			        var text = event.data;
+			        console.log(text);
+			    };
+			}
+		</script>
+
+	</ui:define>
+</ui:composition>
