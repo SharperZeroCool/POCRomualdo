@@ -6,12 +6,12 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Edição</ui:define>
+	<ui:define name="titulo">Cadastro</ui:define>
 
 	<ui:define name="botao">
 		<p:outputLabel />
-		<p:commandButton value="Salvar Edição" action="#{simpleBean.editar()}"
-			ajax="false" />
+		<p:commandButton value="Salvar Cadastro"
+			action="#{simpleBean.salvar()}" ajax="false" />
 	</ui:define>
 
 </ui:composition>

@@ -30,17 +30,23 @@ public class SimpleBean implements Serializable {
 	public String prepararEdicao() {
 		return "/edicao.xhtml";
 	}
+	
+	public String salvar() {
+		service.salvar(simpleView.getItem());
+		this.atualizarView();
+		return "/consulta.xhtml";
+	}
 
 	public String editar() {
 		service.editar(simpleView.getItem());
 		this.atualizarView();
-		return "/index.xhtml";
+		return "/consulta.xhtml";
 	}
 	
 	public String excluir(Item item) {
 		service.excluir(item);
 		this.atualizarView();
-		return "/index.xhtml";
+		return "/consulta.xhtml";
 	}
 
 	public void atualizarView() {

@@ -19,6 +19,14 @@
 				<h:form prependId="false">
 					<p:menubar style="margin-top: -20px; margin-bottom: 20px">
 						<p:menuitem immediate="true" value="Home" outcome="/index" />
+						<p:submenu label="Item">
+						<p:menuitem immediate="true"
+							value="Cadastrar Item"
+							action="/cadastro?faces-redirect=true" />
+						<p:menuitem immediate="true"
+							value="Consultar Item"
+							action="/consulta?faces-redirect=true" />
+					</p:submenu>
 					</p:menubar>
 				</h:form>
 				<p:messages id="messages" />
